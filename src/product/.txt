@@ -1,0 +1,53 @@
+product.module.ts {
+    обьеденяет в себе всю логику, структуру
+}
+    product.controller.ts{
+    контролер отвечает за то что бы получить 
+    данные и отдать данные максимум что он может 
+    сделать это валидировать данные больше ничего 
+    он делать не должен
+}
+product.service.ts{
+    наша логика работи с запросами.
+    вся логика должна находится сдесь
+}
+dto{
+    дата трансфер опшен описание данных 
+    которые приходят или уходят
+}
+
+{
+   " id": 1,
+    "description": "Frappuccino® mit Milch, Matcha und Vanilla Sirup, geblendet mit Eiswürfeln und gekrönt mit Sahne",
+    "name": "Caramel Cream Frappuccino",
+   "slug": "caramel-cream-frappuccino",
+    "images": [
+      "/images/products/Caramel_Cream_Frappuccino.webp",
+     "/images/products/Espresso.webp",
+      "/images/products/Matcha_Tea_Cream_Frappuccino.webp"
+    ],
+    "price": 9,
+    "reviews": [{
+    "id": 1,
+    "product": {
+   " id": 1,
+    "description": "Frappuccino® mit Milch, Matcha und Vanilla Sirup, geblendet mit Eiswürfeln und gekrönt mit Sahne",
+    "name": "Caramel Cream Frappuccino",
+   "slug": "caramel-cream-frappuccino",
+    "images": [
+      "/images/products/Caramel_Cream_Frappuccino.webp",
+     "/images/products/Espresso.webp",
+      "/images/products/Matcha_Tea_Cream_Frappuccino.webp"
+    ],
+    "price": 9,
+    "reviews": [{
+    "id": 1,
+    "product": {}, 
+    "rating": 4,
+    "text": "Finde ganz einfach heraus, ob eine Lieferung in deiner Nähe verfügbar ist.",
+  }]
+  }, 
+    "rating": 4,
+    "text": "Finde ganz einfach heraus, ob eine Lieferung in deiner Nähe verfügbar ist.",
+  }]
+  }
