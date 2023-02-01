@@ -19,7 +19,7 @@ export class ProductService {
   }
 
   async findAll(): Promise<Product[]> {
-    const products = await this.productModel.find()
+    const products = await this.productModel.find().populate('reviews')
     return products
   }
 
@@ -36,7 +36,7 @@ export class ProductService {
   }
 
   async findOneById(id: string) {
-    const product = await this.productModel.findById(id)
+    const product = await this.productModel.findById(id).populate('reviews')
     if (!product) throw new NotFoundException(`Product with id ${id} not found`)
 
     return product
