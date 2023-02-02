@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import mongoose, { HydratedDocument } from 'mongoose'
-// import { Review } from './review.schema'
 export type ProductDocument = HydratedDocument<Product>
 
 @Schema({ versionKey: false, timestamps: true })
@@ -16,7 +15,7 @@ export class Product {
 
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }] })
   reviews: []
-  // { type: mongoose.Schema.Types.ObjectId, ref: 'Review' }
+
   @Prop([String])
   images: string[]
 

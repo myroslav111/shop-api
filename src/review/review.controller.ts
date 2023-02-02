@@ -18,7 +18,6 @@ export class ReviewController {
 
   @Get(':id')
   findOneById(@Param('id') id: string) {
-    // console.log(typeof(id) )
     return this.reviewService.findOneById(id)
   }
 }

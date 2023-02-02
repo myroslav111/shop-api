@@ -31,7 +31,6 @@ export class ProductController {
 
   @Get(':id')
   findOneById(@Param('id') id: string) {
-    // console.log(typeof(id) )
     return this.productService.findOneById(id)
   }
   // @Patch(':name')

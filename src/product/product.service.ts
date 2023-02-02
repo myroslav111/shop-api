@@ -1,12 +1,10 @@
 import { Injectable } from '@nestjs/common'
 import { Product, ProductDocument } from 'src/schemas/product.schema'
 import { CreateProductDto } from './dto/create-product.dto'
-// import { UpdateProductDto } from './dto/update-product.dto'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
 import { NotFoundException } from '@nestjs/common/exceptions'
-// import { HttpException } from '@nestjs/common/exceptions/http.exception'
-// import { HttpStatus } from '@nestjs/common'
+
 
 @Injectable()
 export class ProductService {
