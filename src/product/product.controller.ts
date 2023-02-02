@@ -19,6 +19,13 @@ export class ProductController {
     return this.productService.findAll()
   }
 
+  @Get('/:nameSearchTerm')
+  findAllByName(
+    @Param('nameSearchTerm') nameSearchTerm: string
+  ): Promise<Product[]> {
+    return this.productService.findAllByName(nameSearchTerm)
+  }
+
   @Get('/slug/:slug')
   findOneBySlug(@Param('slug') slug: string) {
     return this.productService.findOneBySlug(slug)

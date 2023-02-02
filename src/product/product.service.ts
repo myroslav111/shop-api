@@ -5,7 +5,6 @@ import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
 import { NotFoundException } from '@nestjs/common/exceptions'
 
-
 @Injectable()
 export class ProductService {
   constructor(
@@ -18,6 +17,13 @@ export class ProductService {
 
   async findAll(): Promise<Product[]> {
     const products = await this.productModel.find().populate('reviews')
+    return products
+  }
+
+  async findAllByName(nameSearchTerm: string): Promise<Product[]> {
+    const products = await this.productModel
+      .find({ name: { $lte: `${nameSearchTerm}` } })
+      .populate('reviews')
     return products
   }
 
