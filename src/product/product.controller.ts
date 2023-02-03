@@ -3,6 +3,7 @@ import { ProductService } from './product.service'
 import { CreateProductDto } from './dto/create-product.dto'
 
 import { Product } from 'src/schemas/product.schema'
+import { sortType } from './sort.type'
 //@Body() это декоратор
 
 @Controller('products')
@@ -19,11 +20,16 @@ export class ProductController {
     return this.productService.findAll()
   }
 
-  @Get('/:nameSearchTerm')
-  findAllByName(
-    @Param('nameSearchTerm') nameSearchTerm: string
-  ): Promise<Product[]> {
-    return this.productService.findAllByName(nameSearchTerm)
+  // @Get('/:nameSearchTerm')
+  // findAllByName(
+  //   @Param('nameSearchTerm') nameSearchTerm: string
+  // ): Promise<Product[]> {
+  //   return this.productService.findAllByName(nameSearchTerm)
+  // }
+
+  @Get('/type/:type')
+  findAllBySelect(@Param('type') type: sortType): Promise<Product[]> {
+    return this.productService.findAllBySelect(type)
   }
 
   @Get('/slug/:slug')

@@ -4,6 +4,7 @@ import { CreateProductDto } from './dto/create-product.dto'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
 import { NotFoundException } from '@nestjs/common/exceptions'
+import { sortType } from './sort.type'
 
 @Injectable()
 export class ProductService {
@@ -20,12 +21,47 @@ export class ProductService {
     return products
   }
 
-  async findAllByName(nameSearchTerm: string): Promise<Product[]> {
-    const products = await this.productModel
-      .find({ name: { $lte: `${nameSearchTerm}` } })
-      .populate('reviews')
-    return products
+  async findAllBySelect(type?: sortType): Promise<Product[]> {
+    switch (type) {
+      case 'newest':
+        const productsNewest = await this.productModel
+          .find({})
+          .sort({ createdAt: -1 })
+          .populate('reviews')
+        return productsNewest
+
+      case 'oldest':
+        const productsOldest = await this.productModel
+          .find()
+          .sort({ createdAt: 1 })
+          .populate('reviews')
+        return productsOldest
+
+      case 'low-to-hight':
+        const productsLowToHight = await this.productModel
+          .find()
+          .sort({ price: 1 })
+          .populate('reviews')
+        return productsLowToHight
+
+      case 'hight-to-low':
+        const productsHightToLow = await this.productModel
+          .find()
+          .sort({ price: -1 })
+          .populate('reviews')
+        return productsHightToLow
+
+      default:
+        throw new NotFoundException('Product not found findAllBySelect')
+    }
   }
+
+  // async findAllByName(nameSearchTerm: string): Promise<Product[]> {
+  //   const products = await this.productModel
+  //     .find({ name: `${nameSearchTerm}` })
+  //     .populate('reviews')
+  //   return products
+  // }
 
   async findOneBySlug(slug: string) {
     const product = await this.productModel.findOne({ slug })
