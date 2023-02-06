@@ -16,10 +16,10 @@ export class ProductService {
     return createdProduct.save()
   }
 
-  async findAll(): Promise<Product[]> {
-    const products = await this.productModel.find().populate('reviews')
-    return products
-  }
+  // async findAll(): Promise<Product[]> {
+  //   const products = await this.productModel.find().populate('reviews')
+  //   return products
+  // }
 
   async findAllBySelect(type?: sortType): Promise<Product[]> {
     switch (type) {
@@ -52,7 +52,8 @@ export class ProductService {
         return productsHightToLow
 
       default:
-        throw new NotFoundException('Product not found findAllBySelect')
+        const products = await this.productModel.find().populate('reviews')
+        return products
     }
   }
 
@@ -69,8 +70,10 @@ export class ProductService {
     return product
   }
 
-  async findRelatives(currentProductId: number) {
-    const product = await this.productModel.find({ currentProductId })
+  async findRelatives(currentProductId: string) {
+    const product = await this.productModel.find({
+      _id: { $ne: currentProductId }
+    })
     if (!product) throw new NotFoundException('Product not found')
     return product
   }

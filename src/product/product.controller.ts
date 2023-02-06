@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common'
+import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common'
 import { ProductService } from './product.service'
 import { CreateProductDto } from './dto/create-product.dto'
 
@@ -14,11 +14,15 @@ export class ProductController {
   create(@Body() createProductDto: CreateProductDto) {
     return this.productService.create(createProductDto)
   }
-
   @Get()
-  findAll(): Promise<Product[]> {
-    return this.productService.findAll()
+  findAllBySelect(@Query('type') type?: sortType): Promise<Product[]> {
+    return this.productService.findAllBySelect(type)
   }
+
+  // @Get()
+  // findAll(): Promise<Product[]> {
+  //   return this.productService.findAll()
+  // }
 
   // @Get('/:nameSearchTerm')
   // findAllByName(
@@ -27,19 +31,14 @@ export class ProductController {
   //   return this.productService.findAllByName(nameSearchTerm)
   // }
 
-  @Get('/type/:type')
-  findAllBySelect(@Param('type') type: sortType): Promise<Product[]> {
-    return this.productService.findAllBySelect(type)
-  }
-
   @Get('/slug/:slug')
   findOneBySlug(@Param('slug') slug: string) {
     return this.productService.findOneBySlug(slug)
   }
 
   @Get('/relatives/:id')
-  findRelatives(@Param('id') _id: string) {
-    return this.productService.findOneById(_id)
+  findRelatives(@Param('id') id: string) {
+    return this.productService.findRelatives(id)
   }
 
   @Get(':id')
