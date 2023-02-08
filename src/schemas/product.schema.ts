@@ -21,6 +21,9 @@ export class Product {
 
   @Prop({ type: String, unique: true })
   slug: string
+
+  @Prop({ type: Number, unique: true })
+  productId: number
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product)

@@ -41,6 +41,11 @@ export class ProductController {
     return this.productService.findRelatives(id)
   }
 
+  // @Get('/relatives/:id')
+  // findRelatives(@Param('id') @Query('type') id: string, type?: sortType) {
+  //   return this.productService.findRelatives(id, type)
+  // }
+
   @Get(':id')
   findOneById(@Param('id') id: string) {
     return this.productService.findOneById(id)
