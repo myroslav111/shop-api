@@ -8,8 +8,7 @@ import { ServeStaticModule } from '@nestjs/serve-static'
 import { ConfigModule } from '@nestjs/config'
 
 //!ServeStaticModule делаем статичную папку с картинками чтобы она открывалась через url
-// const DB_HOST =
-//   'mongodb+srv://Myroslav:kynYR4hNZ8C60ouB@cluster0.3g8xmkk.mongodb.net/shop?retryWrites=true&w=majority'
+
 //это корневой файл где собираются все наши модули
 @Module({
   imports: [
