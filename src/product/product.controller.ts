@@ -4,7 +4,7 @@ import { CreateProductDto } from './dto/create-product.dto'
 
 import { Product } from 'src/schemas/product.schema'
 import { sortType } from './sort.type'
-//@Body() это декоратор
+//!@Body() это декоратор
 
 @Controller('products')
 export class ProductController {

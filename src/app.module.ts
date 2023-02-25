@@ -8,7 +8,7 @@ import { ServeStaticModule } from '@nestjs/serve-static'
 import { ConfigModule } from '@nestjs/config'
 
 //!ServeStaticModule делаем статичную папку с картинками чтобы она открывалась через url
-
+// core.ignorecase
 //это корневой файл где собираются все наши модули
 @Module({
   imports: [
@@ -18,6 +18,7 @@ import { ConfigModule } from '@nestjs/config'
       serveRoot: `/uploads`
     }),
     MongooseModule.forRoot(process.env.DB_HOST_CAFE),
+
     ProductModule,
     ReviewModule
   ],
