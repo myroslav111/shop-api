@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
-import { ProductModule } from './product/product.module'
+// import { ProductModule } from './product/product.module'
 
 import { MongooseModule } from '@nestjs/mongoose'
-import { ReviewModule } from './review/review.module'
+// import { ReviewModule } from './review/review.module'
 import { path } from 'app-root-path'
 import { ServeStaticModule } from '@nestjs/serve-static'
 import { ConfigModule } from '@nestjs/config'
@@ -17,10 +17,10 @@ import { ConfigModule } from '@nestjs/config'
       rootPath: `${path}/uploads`,
       serveRoot: `/uploads`
     }),
-    MongooseModule.forRoot(process.env.DB_HOST_CAFE),
+    MongooseModule.forRoot(process.env.DB_HOST_CAFE)
 
-    ProductModule,
-    ReviewModule
+    // ProductModule,
+    // ReviewModule
   ],
   controllers: [],
   providers: []
